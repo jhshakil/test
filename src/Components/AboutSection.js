@@ -5,10 +5,23 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 const AboutSection = () => {
     useEffect(() => {
+        let device_width = window.innerWidth;
+        const ScrollSmoother = window.ScrollSmoother;
         let tHero = gsap.context(() => {
+            let skewSetter = gsap.quickTo(".portfolio__item-5 img", "skewY"),
+                clamp = gsap.utils.clamp(-15, 15);
+            ScrollSmoother.create({
+                smooth: 1.35,
+                effects: device_width < 1025 ? false : true,
+                smoothTouch: false,
+                normalizeScroll: false,
+                ignoreMobileResize: true,
+                onUpdate: self => skewSetter(clamp(self.getVelocity() / -80)),
+                onStop: () => skewSetter(0)
+            });
             gsap.to(".about__img-2 img", {
                 scrollTrigger: {
-                    trigger: ".about__img-2",
+                    trigger: ".about__img-2 img",
                     start: "top bottom",
                     markers: false,
                     scrub: 1,
@@ -23,7 +36,7 @@ const AboutSection = () => {
     return (
         <div>
             <section className="about__area-2">
-                <div className="container pt-130 pb-110">
+                <div className="container pt-130 pb-110 section-area">
                     <div className="row">
                         <div className="col-xxl-12">
                             <div className="sec-title-wrapper">
@@ -47,11 +60,11 @@ const AboutSection = () => {
                     </div>
                 </div>
 
-                <div className="about__img-2 pb-130">
+                <div className="about__img-2 pb-130 section-area">
                     <img src="assets/imgs/about/2/1.jpg" alt="About Image" data-speed="0.2" />
                 </div>
 
-                <div className="container pb-140">
+                <div className="container pb-140 section-area">
                     <div className="row">
                         <div className="col-xxl-12">
                             <h2 className="brand__title-2 title-anim">We worked with global largest brands

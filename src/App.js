@@ -159,7 +159,7 @@ function App() {
       <ScrollTop />
       <HeaderSection />
       <Home />
-      <FooterSection />
+      {/* <FooterSection /> */}
     </div>
   );
 }
