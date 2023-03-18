@@ -8,6 +8,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useEffect } from 'react';
 import $ from 'jquery';
+import './App.css'
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -149,7 +150,7 @@ function App() {
     return () => tHero.revert();
   }, [])
   return (
-    <div className='dark'>
+    <div className='dark App'>
       <div className="cursor1"></div>
       <div className="cursor2"></div>
 
