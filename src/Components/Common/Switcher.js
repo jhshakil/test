@@ -1,63 +1,65 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import $ from 'jquery';
 
 
 const Switcher = () => {
-    // Switcher JS
-    $('#switcher_open').on('click', function () {
-        $(this).hide();
-        $('#switcher_close').show();
-        $('.switcher__icon').css('right', '280px');
-        $('.switcher__items').css({
-            'right': '0',
+    useEffect(() => {
+        // Switcher JS
+        $('#switcher_open').on('click', function () {
+            $(this).hide();
+            $('#switcher_close').show();
+            $('.switcher__icon').css('right', '280px');
+            $('.switcher__items').css({
+                'right': '0',
+            });
         });
-    });
 
-    $('#switcher_close').on('click', function () {
-        $(this).hide();
-        $('#switcher_open').show();
-        $('.switcher__icon').css('right', '0');
-        $('.switcher__items').css({
-            'right': '-280px',
+        $('#switcher_close').on('click', function () {
+            $(this).hide();
+            $('#switcher_open').show();
+            $('.switcher__icon').css('right', '0');
+            $('.switcher__items').css({
+                'right': '-280px',
+            });
         });
-    });
 
-    // Mode JS
-    $('.mode-type button').on('click', function (e) {
-        $(this).addClass('active').siblings().removeClass('active');
+        // Mode JS
+        $('.mode-type button').on('click', function (e) {
+            $(this).addClass('active').siblings().removeClass('active');
 
-        var mode_val = $('.mode-type button.active').attr('data-mode');
-        if (mode_val == 'dark') {
-            $('body').addClass('dark');
-        } else {
-            $('body').removeClass('dark');
-        }
-    });
+            var mode_val = $('.mode-type button.active').attr('data-mode');
+            if (mode_val == 'dark') {
+                $('body').addClass('dark');
+            } else {
+                $('body').removeClass('dark');
+            }
+        });
 
-    // Language JS
-    $('.lang_dir button').on('click', function (e) {
-        $(this).addClass('active').siblings().removeClass('active');
+        // Language JS
+        $('.lang_dir button').on('click', function (e) {
+            $(this).addClass('active').siblings().removeClass('active');
 
-        var dir_val = $('.lang_dir button.active').attr('data-mode');
-        if (dir_val == 'rtl') {
-            $('body').addClass('dir-rtl');
-        } else {
-            $('body').removeClass('dir-rtl');
-        }
-    });
+            var dir_val = $('.lang_dir button.active').attr('data-mode');
+            if (dir_val == 'rtl') {
+                $('body').addClass('dir-rtl');
+            } else {
+                $('body').removeClass('dir-rtl');
+            }
+        });
 
-    // Cursor JS
-    $('#cursor_style').on('change', function () {
-        var cursor_val = $(this).val();
+        // Cursor JS
+        $('#cursor_style').on('change', function () {
+            var cursor_val = $(this).val();
 
-        if (cursor_val == '1') {
-            $('.cursor1').hide();
-            $('.cursor2').hide();
-        } else {
-            $('.cursor1').show();
-            $('.cursor2').show();
-        }
-    });
+            if (cursor_val == '1') {
+                $('.cursor1').hide();
+                $('.cursor2').hide();
+            } else {
+                $('.cursor1').show();
+                $('.cursor2').show();
+            }
+        });
+    }, [])
     return (
         <div>
             <div className="switcher__area">
